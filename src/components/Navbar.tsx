@@ -1,9 +1,16 @@
+// src/components/Navbar.tsx
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'; 
+import './styles/Navbar.css';
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <h1>C'Artbon</h1>
+      <div className="logo">
+        <Link to="/">
+          <img src={logo} alt="C'Artbon Logo" />
+        </Link>
+      </div>
       <ul>
         <li><Link to="/">Accueil</Link></li>
         <li><Link to="/realisations">Réalisations</Link></li>
