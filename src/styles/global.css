@@ -1,3 +1,6 @@
+@import 'tailwindcss';
+
+
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +23,7 @@
   .navbar .logo img {
     height: 50px; 
     width: auto;
+    margin-left: 2rem ;
   }
   
   .navbar ul {

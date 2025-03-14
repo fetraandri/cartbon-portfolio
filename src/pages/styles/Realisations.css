@@ -1,28 +1,32 @@
+/* styles/realisations.css */
 .realisations {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .realisations h1 {
-    font-size: 2.5rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  
-  .event-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  @media (max-width: 768px) {
-    .realisations h1 {
-      font-size: 2rem;
-    }
-  
-    .event-list {
-      grid-template-columns: 1fr;
-    }
-  }
+  background-color: #f9f9f9; /* Fond clair */
+}
+
+/* Effet 3D sur les cartes au survol */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Soulève la carte */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important; /* Ombre plus forte */
+}
+
+/* Ajustement des images */
+.card-img-top {
+  height: 200px; /* Hauteur fixe pour uniformité */
+  object-fit: cover; /* Coupe l'image proprement */
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+/* Typographie */
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
