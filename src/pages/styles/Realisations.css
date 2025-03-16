@@ -1,8 +1,37 @@
 .realisations {
   padding-top: 6rem;
-  padding-bottom: 6rem ;
+  padding-bottom: 6rem;
 }
 
-.titre{
+.titre {
   padding-bottom: 3rem;
+}
+
+.titre:hover {
+  color: #242220;
+  transition: color 0.3s ease;
+}
+
+/* Animation de fondu */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Légère translation vers le bas au départ */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classe pour les sections au départ */
+.event-section {
+  opacity: 0; /* Caché par défaut */
+  transition: opacity 0.5s ease-out; /* Transition fluide */
+}
+
+/* Classe quand la section devient visible */
+.event-section.visible {
+  opacity: 1;
+  animation: fadeIn 1s ease-out forwards; /* Animation appliquée */
 }

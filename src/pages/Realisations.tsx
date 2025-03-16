@@ -1,11 +1,13 @@
+import { useEffect } from 'react';
 import './styles/Realisations.css';
 import itm2020 from '../assets/itm-2020.jpg';
-import kantomanabe1 from '../assets/kanto-manabe/kantomanabe1.jpg'
-import kantomanabe2 from '../assets/kanto-manabe/kantomanabe2.jpg'
-import kantomanabe3 from '../assets/kanto-manabe/kantomanabe3.jpg'
-import kantomanabe4 from '../assets/kanto-manabe/kantomanabe4.jpg'
-import rencontredart from '../assets/rencontredart.jpg'
-
+import kantomanabe1 from '../assets/kanto-manabe/kantomanabe1.jpg';
+import kantomanabe2 from '../assets/kanto-manabe/kantomanabe2.jpg';
+import kantomanabe3 from '../assets/kanto-manabe/kantomanabe3.jpg';
+import kantomanabe4 from '../assets/kanto-manabe/kantomanabe4.jpg';
+import rencontredart from '../assets/rencontredart.jpg';
+import artmeeting from '../assets/artmeeting.jpg';
+import evenement from '../assets/evenement2020janv.jpg';
 
 function Realisations() {
   const events = [
@@ -19,13 +21,13 @@ function Realisations() {
       title: "Événement C'ArtBON - Janvier 2020",
       description:
         "Un événement au cours duquel des artistes extérieurs à la région ont été invités à partager leurs expériences en tant qu'artistes, en combinaison avec des performances culturelles et des sessions de peinture en direct.",
-      image: "/assets/images/event-2020.jpg",
+      image: evenement,
     },
     {
       title: "Art Meeting Part 2 - Février 2020",
       description:
         "Un suivi du premier Art Meeting, où nous avons présenté les idées discutées dans la partie 1 au Ministère de l'Artisanat de Madagascar.",
-      image: "/assets/images/art-meeting-2-2020.jpg",
+      image: artmeeting,
     },
     {
       title: "Participation à l'ITM 2020",
@@ -37,13 +39,7 @@ function Realisations() {
       title: "Exposition Kanto Manabe - 2023",
       description:
         "Exposition collective d'artistes locaux à l'Hôtel de Ville d'Antananarivo, en collaboration avec d'autres associations du centre-ville.",
-      images: [
-        kantomanabe1,
-        kantomanabe2,
-        kantomanabe3,
-        kantomanabe4,
-        
-      ],
+      images: [kantomanabe1, kantomanabe2, kantomanabe3, kantomanabe4],
     },
     {
       title: "Ateliers permanents",
@@ -53,17 +49,40 @@ function Realisations() {
     },
   ];
 
+  useEffect(() => {
+    const sections = document.querySelectorAll('.event-section');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      {
+        threshold: 0.2, 
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
   return (
     <section className="realisations bg-gray-100 pt-100 py-16">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
-        <h1 className="titre text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16 tracking-tight">
+        <h1 className="titre text-4xl md:text-5xl font-bold text-center text-gray-800 mb-16 tracking-tight fade-in">
           Nos Réalisations
         </h1>
         <div className="space-y-16">
           {events.map((event, index) => (
             <div
               key={index}
-              className={`flex flex-col ${
+              className={`event-section flex flex-col ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               } items-center gap-8 md:gap-12`}
             >
